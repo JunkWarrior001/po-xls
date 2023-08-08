@@ -120,14 +120,14 @@ def main(comments, output, catalogs):
                 msg = cat.find(msgid, msgctxt=msgctxt)
                 if msg is None:
                     row.append(None)
-                # elif 'fuzzy' in msg.flags:
-                #     cell = WriteOnlyCell(sheet, value=msg.msgstr)
-                #     cell.font = fuzzy_font
-                #     row.append(cell)
-                else:
+                elif 'fuzzy' in msg.flags:
                     cell = WriteOnlyCell(sheet, value=msg.msgstr)
-                    cell.fill = Fill
+                    cell.font = fuzzy_font
                     row.append(cell)
+                else:
+                    # cell = WriteOnlyCell(sheet, value=msg.msgstr)
+                    # cell.fill = Fill
+                    row.append(msg.msgstr)
 
     sheet.freeze_panes = 'B1'
     book.save(output)
