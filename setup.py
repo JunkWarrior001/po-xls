@@ -1,3 +1,8 @@
+'''
+Author: 郭涵
+Date: 2023-08-08 17:54:02
+Description: 
+'''
 from setuptools import setup, find_packages
 import sys
 
@@ -31,7 +36,7 @@ setup(name='poxls',
       keywords='translation po gettext Babel lingua',
       author='Wichert Akkerman',
       author_email='wichert@wiggy.net',
-      url='https://github.com/wichert/po-xls',
+      url='https://github.com/JunkWarrior001/po-xls',
       license='BSD',
       packages=find_packages('src'),
       package_dir={'': 'src'},
