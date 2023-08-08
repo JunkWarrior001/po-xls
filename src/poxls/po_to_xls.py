@@ -88,9 +88,9 @@ def main(comments, output, catalogs):
         row.append(cat[0])
     sheet.append(row)
     Fill = PatternFill(start_color="FFFF00",end_color="FFFF00",fill_type="solid")
-    for row in sheet:
-        for cell in row:
-            cell.fill = Fill
+    # for row in sheet:
+    #     for cell in row:
+    #         cell.fill = Fill
 
     ref_catalog = catalogs[0][1]
 
@@ -126,6 +126,9 @@ def main(comments, output, catalogs):
                 else:
                     row.append(msg.msgstr)
             sheet.append(row)
+            for row in sheet:
+                for cell in row:
+                    cell.fill = Fill
 
     sheet.freeze_panes = 'B1'
     book.save(output)
