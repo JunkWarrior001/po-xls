@@ -87,7 +87,7 @@ def main(comments, output, catalogs):
     for (i, cat) in enumerate(catalogs):
         row.append(cat[0])
     sheet.append(row)
-    Fill = PatternFill(start_color="FFF000",end_color="FFF000",fill_type="solid")
+    Fill = PatternFill(start_color="FF00F0",end_color="FF00F0",fill_type="solid")
     # for row in sheet:
     #     for cell in row:
     #         cell.fill = Fill
