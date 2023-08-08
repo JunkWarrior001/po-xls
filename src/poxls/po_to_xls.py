@@ -65,7 +65,7 @@ def main(comments, output, catalogs):
                 messages.append((msg.msgid, msg.msgctxt, msg))
                 seen.add((msg.msgid, msg.msgctxt))
 
-    book = openpyxl.Workbook(write_only=True)
+    book = openpyxl.Workbook()
     sheet = book.create_sheet(title=u'Translations')
 
     row = []
@@ -89,7 +89,7 @@ def main(comments, output, catalogs):
     sheet.append(row)
     Fill = PatternFill(start_color="FFFF00",end_color="FFFF00",fill_type="solid")
     for cell in sheet[0]:
-        cell.fill=Fill
+        cell.fill = Fill
 
     ref_catalog = catalogs[0][1]
 
