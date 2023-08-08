@@ -3,6 +3,7 @@ import click
 import polib
 import openpyxl
 from openpyxl.styles import Font
+from openpyxl.styles import PatternFill
 # openpyxl versions < 2.5.0b1
 try:
     from openpyxl.cell import WriteOnlyCell
@@ -120,6 +121,9 @@ def main(comments, output, catalogs):
                     row.append(cell)
                 else:
                     row.append(msg.msgstr)
+            fill = PatternFill(start_color="FFFF00",end_color="FFFF00",fill_type="solid")
+            for cell in row:
+                cell.fill = fill
             sheet.append(row)
 
     sheet.freeze_panes = 'B1'
