@@ -125,7 +125,7 @@ def main(comments, output, catalogs):
                 #     cell.font = fuzzy_font
                 #     row.append(cell)
                 else:
-                    cell = WriteOnlyCell(sheet, value=msg.msgstr);
+                    cell = WriteOnlyCell(sheet, value=msg.msgstr)
                     cell.fill = Fill
                     row.append(cell)
 
