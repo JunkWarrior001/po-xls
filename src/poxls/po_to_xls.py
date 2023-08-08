@@ -88,8 +88,9 @@ def main(comments, output, catalogs):
         row.append(cat[0])
     sheet.append(row)
     Fill = PatternFill(start_color="FFFF00",end_color="FFFF00",fill_type="solid")
-    for cell in sheet[0]:
-        cell.fill = Fill
+    for row in sheet:
+        for cell in row:
+            cell.fill = Fill
 
     ref_catalog = catalogs[0][1]
 
