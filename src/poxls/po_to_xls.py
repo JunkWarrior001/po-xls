@@ -86,9 +86,10 @@ def main(comments, output, catalogs):
 
     for (i, cat) in enumerate(catalogs):
         row.append(cat[0])
-    fill = PatternFill(start_color="FFFF00",end_color="FFFF00",fill_type="solid")
-    for cell in row:
-        cell.fill = fill
+    #fill = PatternFill(start_color="FFFF00",end_color="FFFF00",fill_type="solid")
+    # for cell in row:
+    #     cell.fill = fill
+    
     sheet.append(row)
 
     ref_catalog = catalogs[0][1]
@@ -113,17 +114,20 @@ def main(comments, output, catalogs):
                 row.append(msg.comment if msg is not None else None)
             if has_tcomment_column:
                 row.append(msg.tcomment if msg is not None else None)
+            Fill = PatternFill(start_color="FFFF00",end_color="FFFF00",fill_type="solid")
             for cat in catalogs:
                 cat = cat[1]
                 msg = cat.find(msgid, msgctxt=msgctxt)
                 if msg is None:
                     row.append(None)
-                elif 'fuzzy' in msg.flags:
-                    cell = WriteOnlyCell(sheet, value=msg.msgstr)
-                    cell.font = fuzzy_font
-                    row.append(cell)
+                # elif 'fuzzy' in msg.flags:
+                #     cell = WriteOnlyCell(sheet, value=msg.msgstr)
+                #     cell.font = fuzzy_font
+                #     row.append(cell)
                 else:
-                    row.append(msg.msgstr)
+                    cell = WriteOnlyCell(sheet, value=msg.msgstr);
+                    cell.fill = Fill
+                    row.append(cell)
 
     sheet.freeze_panes = 'B1'
     book.save(output)
