@@ -121,10 +121,10 @@ def main(comments, output, catalogs):
                     row.append(cell)
                 else:
                     row.append(msg.msgstr)
-            fill = PatternFill(start_color="FFFF00",end_color="FFFF00",fill_type="solid")
-            for cell in row:
-                cell.fill = fill
-            sheet.append(row)
+            # fill = PatternFill(start_color="FFFF00",end_color="FFFF00",fill_type="solid")
+            # for cell in row:
+            #     cell.fill = fill
+            # sheet.append(row)
 
     sheet.freeze_panes = 'B1'
     book.save(output)
