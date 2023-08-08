@@ -3,7 +3,6 @@ import click
 import polib
 import openpyxl
 from openpyxl.styles import Font
-from openpyxl.styles import PatternFill
 # openpyxl versions < 2.5.0b1
 try:
     from openpyxl.cell import WriteOnlyCell
@@ -86,10 +85,6 @@ def main(comments, output, catalogs):
 
     for (i, cat) in enumerate(catalogs):
         row.append(cat[0])
-    #fill = PatternFill(start_color="FFFF00",end_color="FFFF00",fill_type="solid")
-    # for cell in row:
-    #     cell.fill = fill
-    
     sheet.append(row)
 
     ref_catalog = catalogs[0][1]
@@ -114,7 +109,6 @@ def main(comments, output, catalogs):
                 row.append(msg.comment if msg is not None else None)
             if has_tcomment_column:
                 row.append(msg.tcomment if msg is not None else None)
-            Fill = PatternFill(start_color="FFFF00",end_color="FFFF00",fill_type="solid")
             for cat in catalogs:
                 cat = cat[1]
                 msg = cat.find(msgid, msgctxt=msgctxt)
@@ -125,9 +119,8 @@ def main(comments, output, catalogs):
                     cell.font = fuzzy_font
                     row.append(cell)
                 else:
-                    # cell = WriteOnlyCell(sheet, value=msg.msgstr)
-                    # cell.fill = Fill
                     row.append(msg.msgstr)
+            sheet.append(row)
 
     sheet.freeze_panes = 'B1'
     book.save(output)
